@@ -1,0 +1,50 @@
+{
+  "name": "inversify-vue-test",
+  "version": "1.0.0",
+  "description": "Test of using InverisfyJS with VueJS and Vuex.",
+  "scripts": {
+    "start": "webpack-dev-server --inline --progress",
+    "build": "webpack --progress --profile --bail --display-optimization-bailout"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patrickhousley/inversify-vue-test.git"
+  },
+  "author": "Patrick Housley <patrick.f.housley@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/patrickhousley/inversify-vue-test/issues"
+  },
+  "homepage": "https://github.com/patrickhousley/inversify-vue-test#readme",
+  "dependencies": {
+    "inversify": "4.1.1",
+    "vue": "2.3.4",
+    "vue-class-component": "5.0.1",
+    "vuex": "2.3.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "7.1.1",
+    "clean-webpack-plugin": "0.1.16",
+    "css-loader": "0.28.4",
+    "cssnano": "3.10.0",
+    "extract-text-webpack-plugin": "2.1.2",
+    "html-webpack-plugin": "2.29.0",
+    "json-loader": "0.5.4",
+    "node-sass": "4.5.3",
+    "postcss-loader": "2.0.6",
+    "sass-loader": "6.0.6",
+    "stats-webpack-plugin": "0.6.1",
+    "style-loader": "0.18.2",
+    "ts-loader": "2.2.1",
+    "tslib": "1.7.1",
+    "tslint": "5.4.3",
+    "typescript": "2.4.1",
+    "vue-template-compiler": "2.3.4",
+    "vue-template-loader": "0.3.1",
+    "webpack": "3.0.0",
+    "webpack-dev-server": "2.5.0"
+  }
+}
