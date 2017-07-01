@@ -4,7 +4,8 @@
   "description": "Test of using InverisfyJS with VueJS and Vuex.",
   "scripts": {
     "start": "webpack-dev-server --inline --progress",
-    "build": "webpack --progress --profile --bail --display-optimization-bailout"
+    "build": "webpack --progress --profile --bail --display-optimization-bailout",
+    "lint": "tslint --type-check --project tsconfig.json 'src/**/*.ts'"
   },
   "engines": {
     "node": ">=8"
@@ -21,8 +22,10 @@
   "homepage": "https://github.com/patrickhousley/inversify-vue-test#readme",
   "dependencies": {
     "inversify": "4.1.1",
+    "reflect-metadata": "0.1.10",
     "vue": "2.3.4",
     "vue-class-component": "5.0.1",
+    "vue-property-decorator": "5.1.0",
     "vuex": "2.3.1"
   },
   "devDependencies": {

@@ -1,0 +1,128 @@
+{
+  "extends": "tslint:recommended",
+  "rulesDirectory": [],
+  "defaultSeverity": "error",
+  "rules": {
+    "align": {
+      "options": [
+        "parameters",
+        "statements",
+        "arguments",
+        "elements"
+      ]
+    },
+    "arrow-parens": {
+      "options": ["ban-single-arg-parens"]
+    },
+    "comment-format": false,
+    "curly": {
+      "options": ["ignore-same-line"]
+    },
+    "indent": {
+      "options": ["spaces", 2]
+    },
+    "interface-name": {
+      "options": ["never-prefix"]
+    },
+    "jsdoc-format": false,
+    "max-line-length": false,
+    "member-ordering": {
+      "options": {
+        "order": [
+          "private-static-field",
+          "protected-static-field",
+          "public-static-field",
+          "public-static-method",
+          "protected-static-method",
+          "private-static-method",
+          "private-instance-field",
+          "protected-instance-field",
+          "public-instance-field",
+          "public-constructor",
+          "protected-constructor",
+          "private-constructor",
+          "public-instance-method",
+          "protected-instance-method",
+          "private-instance-method"
+        ]
+      }
+    },
+    "no-any": true,
+    "no-console": false,
+    "no-duplicate-variable": true,
+    "no-inferrable-types": false,
+    "no-invalid-this": true,
+    "no-switch-case-fall-through": true,
+    "object-literal-sort-keys": false,
+    "quotemark": {
+      "options": [
+        "single",
+        "jsx-double"
+      ]
+    },
+    "trailing-comma": {
+      "options":[
+        {
+          "multiline": "never",
+          "singleline": "never"
+        }
+      ]
+    },
+    "variable-name": {
+      "options": [
+        "ban-keywords",
+        "check-format",
+        "allow-pascal-case",
+        "allow-leading-underscore"
+      ]
+    },
+
+    "array-type": {
+      "options": ["array"]
+    },
+    "await-promise": true,
+    "deprecation": {
+      "severity": "warn"
+    },
+    "binary-expression-operand-order": true,
+    "import-blacklist": {
+      "options": ["rxjs"]
+    },
+    "linebreak-style": {
+      "options": ["LF"]
+    },
+    "no-boolean-literal-compare": true,
+    "no-default-export": true,
+    "no-floating-promises": true,
+    "no-for-in-array": true,
+    "no-import-side-effect": true,
+    "no-inferred-empty-object-type": true,
+    "no-invalid-template-strings": true,
+    "no-irregular-whitespace": true,
+    "no-magic-numbers": {
+      "severity": "warn"
+    },
+    "no-require-imports": true,
+    "no-non-null-assertion": true,
+    "no-null-keyword": false,
+    "no-object-literal-type-assertion": true,
+    "no-unnecessary-type-assertion": true,
+    "no-sparse-arrays": true,
+    "no-unbound-method": {
+      "options": ["ignore-static"]
+    },
+    "no-unnecessary-callback-wrapper": true,
+    "no-unsafe-any": true,
+    "no-void-expression": true,
+    "ordered-imports": false,
+    "prefer-conditional-expression": true,
+    "prefer-method-signature": true,
+    "prefer-object-spread": true,
+    "prefer-switch": true,
+    "prefer-template": true,
+    "promise-function-async": true,
+    "restrict-plus-operands": true,
+    "type-literal-delimiter": true,
+    "use-default-type-parameter": true
+  }
+}
