@@ -5,7 +5,8 @@
   "scripts": {
     "start": "webpack-dev-server --inline --progress",
     "build": "webpack --progress --profile --bail --display-optimization-bailout",
-    "lint": "tslint --type-check --project tsconfig.json 'src/**/*.ts'"
+    "lint": "tslint --type-check --project tsconfig.json 'src/**/*.ts'",
+    "precommit": "lint-staged"
   },
   "engines": {
     "node": ">=8"
@@ -35,12 +36,16 @@
     "cssnano": "3.10.0",
     "extract-text-webpack-plugin": "2.1.2",
     "html-webpack-plugin": "2.29.0",
+    "husky": "0.14.2",
+    "jest": "20.0.4",
     "json-loader": "0.5.4",
+    "lint-staged": "4.0.0",
     "node-sass": "4.5.3",
     "postcss-loader": "2.0.6",
     "sass-loader": "6.0.6",
     "stats-webpack-plugin": "0.6.1",
     "style-loader": "0.18.2",
+    "stylefmt": "6.0.0",
     "ts-loader": "2.2.1",
     "tslib": "1.7.1",
     "tslint": "5.4.3",
@@ -49,5 +54,15 @@
     "vue-template-loader": "0.3.1",
     "webpack": "3.0.0",
     "webpack-dev-server": "2.5.0"
+  },
+  "lint-staged": {
+    "src/*.ts": [
+      "prettier --parser typescript --write",
+      "git add"
+    ],
+    "src/**/*.scss": [
+      "stylefmt",
+      "git add"
+    ]
   }
 }
