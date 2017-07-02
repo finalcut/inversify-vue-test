@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const StatsPlugin = require('stats-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const environment = process.env.NODE_ENV || 'development';
 

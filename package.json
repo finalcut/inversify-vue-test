@@ -6,7 +6,8 @@
     "start": "webpack-dev-server --inline --progress",
     "build": "webpack --progress --profile --bail --display-optimization-bailout",
     "lint": "tslint --type-check --project tsconfig.json 'src/**/*.ts'",
-    "precommit": "lint-staged"
+    "test": "NODE_ENV=test jest --coverage",
+    "precommit": "npm run test && lint-staged"
   },
   "engines": {
     "node": ">=8"
@@ -30,11 +31,11 @@
     "vuex": "2.3.1"
   },
   "devDependencies": {
+    "@types/jest": "20.0.2",
     "autoprefixer": "7.1.1",
     "clean-webpack-plugin": "0.1.16",
     "css-loader": "0.28.4",
     "cssnano": "3.10.0",
-    "extract-text-webpack-plugin": "2.1.2",
     "html-webpack-plugin": "2.29.0",
     "husky": "0.14.2",
     "jest": "20.0.4",
@@ -42,6 +43,7 @@
     "lint-staged": "4.0.0",
     "node-sass": "4.5.3",
     "postcss-loader": "2.0.6",
+    "prettier": "1.5.2",
     "sass-loader": "6.0.6",
     "stats-webpack-plugin": "0.6.1",
     "style-loader": "0.18.2",
@@ -64,5 +66,39 @@
       "stylefmt",
       "git add"
     ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,ts}",
+      "!src/*.{js,ts}",
+      "!src/**/*.spec.{js,ts}",
+      "!**/*.interface.ts",
+      "!src/test-lib/**/*.ts"
+    ],
+    "collectCoverage": true,
+    "coverageReporters": [
+      "lcov"
+    ],
+    "coverageDirectory": "./coverage",
+    "globals": {
+      "__TS_CONFIG__": "tsconfig.json",
+      "__TRANSFORM_HTML__": true
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "<rootDir>/"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "moduleNameMapper": {
+      "^vue$": "vue/dist/vue.common.js"
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setup-jest.ts",
+    "testRegex": "\\.spec\\.(ts|js)$",
+    "transform": {
+      ".ts": "<rootDir>/src/test-lib/utils/vue-preprocessor.js"
+    }
   }
 }

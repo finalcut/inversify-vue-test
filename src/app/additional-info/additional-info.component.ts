@@ -1,4 +1,5 @@
-import { Component, Vue } from 'vue-property-decorator';
+import Vue from 'vue';
+import { Component } from 'vue-property-decorator';
 import { injectable } from 'inversify';
 import * as Template from './additional-info.component.html?style=./additional-info.component.scss';
 
