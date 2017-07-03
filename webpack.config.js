@@ -23,8 +23,9 @@ const configuration = {
     ]
   },
   entry: {
-    'app': 'src/main.ts',
-    'styles': 'src/styles.scss'
+    'vendors': 'node_modules/reflect-metadata/Reflect.ts',
+    'basic-app/styles': 'src/basic-app/styles.scss',
+    'basic-app/app': 'src/basic-app/index.ts'
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -105,7 +106,19 @@ const configuration = {
       }
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src', 'index.html')
+      template: path.resolve(__dirname, 'src', 'index.html'),
+      showErrors: false,
+      inject: false
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'src', 'basic-app', 'index.html'),
+      showErrors: false,
+      filename: 'basic-app/index.html',
+      chunks: [
+        'vendors',
+        'basic-app/styles',
+        'basic-app/app'
+      ]
     }),
     new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname)
@@ -116,11 +129,20 @@ const configuration = {
     port: 3000,
     host: 'localhost',
     historyApiFallback: true,
-    contentBase: path.resolve(__dirname, 'src')
+    contentBase: path.resolve(__dirname, 'dist'),
+    inline: true,
+    compress: true
   }
 };
 
 if (environment === 'development') {
+  configuration.plugins.push(
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendors',
+      // Move all node_modules into vendors chunk
+      minChunks: module => /node_modules/.test(module.resource)
+    })
+  );
 } else if (environment === 'production') {
   configuration.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
@@ -152,10 +174,7 @@ if (environment === 'development') {
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendors',
-      chunks: [
-        'app'
-      ],
-      // Move all node_modules into vendors chunk but not @angular
+      // Move all node_modules into vendors chunk
       minChunks: module => /node_modules/.test(module.resource)
     })
   );

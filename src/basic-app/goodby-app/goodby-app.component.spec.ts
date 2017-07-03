@@ -1,9 +1,6 @@
-import Vue from 'vue';
-import { Container, injectable } from 'inversify';
-import { Component } from 'vue-property-decorator';
-import { ContainerizedVue, VueClass } from 'src/lib/containerized-vue';
-import { containerTypes } from 'src/app/app.types';
-import { AppComponent } from 'src/app/app.component';
+import { Vue, VueClass, Component, Container, injectable } from 'src/lib/vue.interface';
+import { registry } from 'src/basic-app/registry';
+import { GoodbyAppComponent } from 'src/basic-app/goodby-app/goodby-app.component';
 
 @Component({
   template: '<div></div>'
@@ -12,21 +9,32 @@ import { AppComponent } from 'src/app/app.component';
 export class MockEmptyComponent extends Vue {
 }
 
-describe('AppComponent', () => {
+describe('GoodbyAppComponent', () => {
+  let mountPoint: HTMLElement;
   let container: Container;
-  let component: AppComponent;
+  let app: Vue;
+  let component: GoodbyAppComponent;
 
   // Setup the IoC container
   beforeEach(() => {
     container = new Container();
-    container.bind<VueClass>(containerTypes.AppComponent).toConstructor(AppComponent);
-    container.bind<VueClass>(containerTypes.AdditionalInfoComponent).toConstructor(MockEmptyComponent);
+    container.bind<VueClass>(registry.AppComponent).toConstructor(GoodbyAppComponent);
+    container.bind<VueClass>(registry.AdditionalInfoComponent).toConstructor(MockEmptyComponent);
   });
 
   // Setup the Vue component
   beforeEach(() => {
-    ContainerizedVue.prototype.$container = container;
-    component = new ContainerizedVue(AppComponent as Vue.ComponentOptions<Vue>).$mount() as AppComponent;
+    mountPoint = document.createElement('div');
+    mountPoint.id = 'basic-app-main';
+    app = new Vue({
+      el: mountPoint,
+      render: r => r(container.get(registry.AppComponent)),
+      provide: () => ({
+        container,
+        registry
+      })
+    }).$mount();
+    component = app.$children[0] as GoodbyAppComponent;
   });
 
   it('should create the app', () => {

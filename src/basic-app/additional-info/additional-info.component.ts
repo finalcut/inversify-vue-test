@@ -1,10 +1,10 @@
-import Vue from 'vue';
-import { Component } from 'vue-property-decorator';
-import { injectable } from 'inversify';
+import { Vue, Component, injectable } from 'src/lib/vue.interface';
 import * as Template from './additional-info.component.html?style=./additional-info.component.scss';
 
 @Template
-@Component
+@Component({
+  name: 'additional-info'
+})
 @injectable()
 export class AdditionalInfoComponent extends Vue {
   public name = 'Inversify Vue Test';

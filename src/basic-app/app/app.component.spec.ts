@@ -1,9 +1,6 @@
-import Vue from 'vue';
-import { Container, injectable } from 'inversify';
-import { Component } from 'vue-property-decorator';
-import { ContainerizedVue, VueClass } from 'src/lib/containerized-vue';
-import { containerTypes } from 'src/app/app.types';
-import { GoodbyAppComponent } from 'src/app/goodby-app.component';
+import { Vue, VueClass, Component, Container, injectable } from 'src/lib/vue.interface';
+import { registry } from 'src/basic-app/registry';
+import { AppComponent } from 'src/basic-app/app/app.component';
 
 @Component({
   template: '<div></div>'
@@ -12,24 +9,37 @@ import { GoodbyAppComponent } from 'src/app/goodby-app.component';
 export class MockEmptyComponent extends Vue {
 }
 
-describe('GoodbyAppComponent', () => {
+describe('AppComponent', () => {
+  let mountPoint: HTMLElement;
   let container: Container;
-  let component: GoodbyAppComponent;
+  let app: Vue;
+  let component: AppComponent;
 
   // Setup the IoC container
   beforeEach(() => {
     container = new Container();
-    container.bind<VueClass>(containerTypes.AppComponent).toConstructor(GoodbyAppComponent);
-    container.bind<VueClass>(containerTypes.AdditionalInfoComponent).toConstructor(MockEmptyComponent);
+    container.bind<VueClass>(registry.AppComponent).toConstructor(AppComponent);
+    container.bind<VueClass>(registry.AdditionalInfoComponent).toConstructor(MockEmptyComponent);
   });
 
   // Setup the Vue component
   beforeEach(() => {
-    ContainerizedVue.prototype.$container = container;
-    component = new ContainerizedVue(GoodbyAppComponent as Vue.ComponentOptions<Vue>).$mount() as GoodbyAppComponent;
+    mountPoint = document.createElement('div');
+    mountPoint.id = 'basic-app-main';
+    app = new Vue({
+      el: mountPoint,
+      render: r => r(container.get(registry.AppComponent)),
+      provide: () => ({
+        container,
+        registry
+      })
+    }).$mount();
+    component = app.$children[0] as AppComponent;
   });
 
   it('should create the app', () => {
+    expect(mountPoint).toBeDefined();
+    expect(container).toBeDefined();
     expect(component).toBeDefined();
   });
 
