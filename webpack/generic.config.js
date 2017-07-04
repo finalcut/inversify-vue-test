@@ -30,8 +30,7 @@ module.exports = {
       {
         test: /\.ts$/,
         use: [
-          { loader: 'ts-loader' },
-          { loader: 'vue-router-loader' }
+          { loader: 'ts-loader' }
         ]
       },
       {
