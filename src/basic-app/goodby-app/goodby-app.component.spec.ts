@@ -1,4 +1,4 @@
-import { Vue, VueClass, Component, Container, injectable } from 'src/lib/vue.interface';
+import { Vue, VueClass, Component, Container, injectable } from 'src/lib/vue.barrel';
 import { registry } from 'src/basic-app/registry';
 import { GoodbyAppComponent } from 'src/basic-app/goodby-app/goodby-app.component';
 

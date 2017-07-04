@@ -1,4 +1,4 @@
-import { Vue, Component, injectable } from 'src/lib/vue.interface';
+import { Vue, Component, injectable } from 'src/lib/vue.barrel';
 import * as Template from './additional-info.component.html?style=./additional-info.component.scss';
 
 @Template

@@ -1,4 +1,4 @@
-import { Vue, VueClass, Component, Inject, Registry, Container, injectable } from 'src/lib/vue.interface';
+import { Vue, VueClass, Component, Inject, Registry, Container, injectable } from 'src/lib/vue.barrel';
 import * as Template from './goodby-app.component.html?style=./goodby-app.component.scss';
 
 @Template
