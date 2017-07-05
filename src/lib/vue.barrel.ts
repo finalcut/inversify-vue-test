@@ -6,7 +6,9 @@ export interface Registry {
   [name: string]: symbol;
 }
 
+// import Vue from 'vue';
 import VueRouter from 'vue-router';
 export {
+  // Vue,
   VueRouter
 };

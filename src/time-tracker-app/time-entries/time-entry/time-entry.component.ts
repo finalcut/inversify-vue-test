@@ -1,11 +1,9 @@
 import { Vue, Component, injectable } from 'src/lib/vue.barrel';
 import { TimeEntry } from 'src/time-tracker-app/time-entries/time-entries.interface';
-import * as Template from './time-entry.component.html?style=./time-entry.component.scss';
+import template from 'src/time-tracker-app/time-entries/time-entry/time-entry.component.vue';
 
-@Template
-@Component
+@Component(template)
 @injectable()
 export class TimeEntryComponent extends Vue {
   public timeEntries: TimeEntry[];
-
 }

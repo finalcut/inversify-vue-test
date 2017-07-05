@@ -1,9 +1,11 @@
 import { Vue, Component, injectable } from 'src/lib/vue.barrel';
-import * as Template from './additional-info.component.html?style=./additional-info.component.scss';
+import template from 'src/basic-app/additional-info/additional-info.component.vue';
 
-@Template
 @Component({
-  name: 'additional-info'
+  ...template,
+  ...{
+    name: 'additional-info'
+  }
 })
 @injectable()
 export class AdditionalInfoComponent extends Vue {

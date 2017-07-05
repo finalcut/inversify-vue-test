@@ -1,5 +1,4 @@
-import * as Vue from 'vue';
-
+/* tslint:disable:no-require-imports */
 /**
  * When building a Vue app with Webpack, we must import Vue using
  * the syntax `import Vue from 'vue'` or the application will fail
@@ -8,6 +7,10 @@ import * as Vue from 'vue';
  * corrects that by overriding the import of vue to provide the correct
  * import value.
  */
-jest.mock('vue', () => {
-  return { default: Vue };
-});
+jest.setMock('vue', (() => {
+  const Vue = require('vue');
+  return {
+    default: Vue,
+    Vue
+  };
+})());

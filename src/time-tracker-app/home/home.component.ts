@@ -1,8 +1,7 @@
 import { Vue, Component, injectable } from 'src/lib/vue.barrel';
-import * as Template from './home.component.html?style=./home.component.scss';
+import template from 'src/time-tracker-app/home/home.component.vue';
 
-@Template
-@Component
+@Component(template)
 @injectable()
 export class HomeComponent extends Vue {
 }

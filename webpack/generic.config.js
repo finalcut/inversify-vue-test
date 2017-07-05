@@ -30,20 +30,25 @@ module.exports = {
       {
         test: /\.ts$/,
         use: [
-          { loader: 'ts-loader' }
+          {
+            loader: 'ts-loader',
+            options: {
+              appendTsSuffixTo: [/\.vue$/],
+            }
+          }
+        ]
+      },
+      {
+        test: /\.vue$/,
+        use: [
+          { loader: 'vue-loader' }
         ]
       },
       {
         test: /\.html$/,
         exclude: /index\.html$/,
         use: [
-          {
-            loader: 'vue-template-loader',
-            options: {
-              scoped: true,
-              sourceMap: true
-            }
-          }
+          { loader: 'html-loader' }
         ]
       },
       {

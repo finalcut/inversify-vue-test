@@ -1,3 +1,4 @@
+<template>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-desktop-drawer-button">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
@@ -35,3 +36,9 @@
     </div>
   </main>
 </div>
+</template>
+
+<style lang="scss" scoped>
+
+</style>
+

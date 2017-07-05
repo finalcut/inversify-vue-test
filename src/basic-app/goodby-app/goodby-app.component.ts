@@ -1,8 +1,7 @@
 import { Vue, VueClass, Component, Inject, Registry, Container, injectable } from 'src/lib/vue.barrel';
-import * as Template from './goodby-app.component.html?style=./goodby-app.component.scss';
+import template from 'src/basic-app/goodby-app/goodby-app.component.vue';
 
-@Template
-@Component
+@Component(template)
 @injectable()
 export class GoodbyAppComponent extends Vue {
   @Inject()
