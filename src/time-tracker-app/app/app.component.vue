@@ -11,10 +11,9 @@
         <router-link
             :to="'/home'"
             class="mdl-navigation__link">Home</router-link>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
+        <router-link
+            :to="'/time-entries'"
+            class="mdl-navigation__link">Time Entries</router-link>
       </nav>
     </div>
   </header>
@@ -24,10 +23,9 @@
       <router-link
           :to="'/home'"
           class="mdl-navigation__link">Home</router-link>
-      <a class="mdl-navigation__link" href="">Link</a>
-      <a class="mdl-navigation__link" href="">Link</a>
-      <a class="mdl-navigation__link" href="">Link</a>
-      <a class="mdl-navigation__link" href="">Link</a>
+      <router-link
+          :to="'/time-entries'"
+          class="mdl-navigation__link">Time Entries</router-link>
     </nav>
   </div>
   <main class="mdl-layout__content">

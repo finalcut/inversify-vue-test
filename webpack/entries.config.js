@@ -9,8 +9,8 @@ module.exports = {
     ],
     'basic-app/styles': 'src/basic-app/styles.scss',
     'basic-app/app': 'src/basic-app/index.ts',
-    'time-tracker-app/styles': 'src/time-tracker-app/styles.scss',
-    'time-tracker-app/app': 'src/time-tracker-app/index.ts'
+    // 'time-tracker-app/styles': 'src/time-tracker-app/styles.scss',
+    // 'time-tracker-app/app': 'src/time-tracker-app/index.ts'
   },
   plugins: [
     new HtmlWebpackPlugin({

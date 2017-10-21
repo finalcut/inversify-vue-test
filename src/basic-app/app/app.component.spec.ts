@@ -1,5 +1,7 @@
-import { Vue, VueClass, Component, Container, injectable } from 'src/lib/vue.barrel';
-import { registry } from 'src/basic-app/registry';
+import Vue, { Component as VueComponent } from 'vue';
+import Component from 'vue-class-component';
+import { Container } from 'inversify';
+import { registry, injectable } from '../di';
 import { AppComponent } from 'src/basic-app/app/app.component';
 
 @Component({
@@ -18,8 +20,8 @@ describe('AppComponent', () => {
   // Setup the IoC container
   beforeEach(() => {
     container = new Container();
-    container.bind<VueClass>(registry.AppComponent).toConstructor(AppComponent);
-    container.bind<VueClass>(registry.AdditionalInfoComponent).toConstructor(MockEmptyComponent);
+    container.bind<VueComponent>(registry.AppComponent).toConstructor(AppComponent);
+    container.bind<VueComponent>(registry.AdditionalInfoComponent).toConstructor(MockEmptyComponent);
   });
 
   // Setup the Vue component

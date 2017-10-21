@@ -1,5 +1,5 @@
 import { Vue, VueClass, Component, Container, injectable } from 'src/lib/vue.barrel';
-import { registry } from 'src/basic-app/registry';
+import { registry } from 'src/basic-app/di';
 import { GoodbyAppComponent } from 'src/basic-app/goodby-app/goodby-app.component';
 
 @Component({
